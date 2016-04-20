@@ -1,3 +1,7 @@
+file '/root/.gitconfig' do  
+  action :create_if_missing
+end
+
 bash 'git configuration' do
   code <<-EOH
     git config --global user.email "#{node[:git][:email]}"
