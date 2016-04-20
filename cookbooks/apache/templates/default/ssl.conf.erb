@@ -1,0 +1,37 @@
+Listen 443 https
+SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
+
+SSLSessionCache         shmcb:/run/httpd/sslcache(512000)
+SSLSessionCacheTimeout  300
+
+SSLRandomSeed startup file:/dev/urandom  256
+SSLRandomSeed connect builtin
+
+<VirtualHost _default_:443>
+  ProxyPass / http://127.0.0.1:<%= @params[:port] %>/
+  #DocumentRoot "/var/www/html"
+  #ServerName www.example.com:443
+
+  ErrorLog logs/ssl_error_log
+  TransferLog logs/ssl_access_log
+  LogLevel warn
+
+  SSLEngine on
+
+  SSLProtocol all -SSLv2
+
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5:!SEED:!IDEA
+
+  #SSLCipherSuite RC4-SHA:AES128-SHA:HIGH:MEDIUM:!aNULL:!MD5
+  #SSLHonorCipherOrder on 
+
+  SSLCertificateFile /etc/pki/tls/certs/localhost.crt
+  SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+  #SSLCertificateChainFile /etc/pki/tls/certs/server-chain.crt
+  #SSLCACertificateFile /etc/pki/tls/certs/ca-bundle.crt
+  #SSLVerifyClient require
+  #SSLVerifyDepth  10
+  CustomLog logs/ssl_request_log \
+            "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
+</VirtualHost>                                  
+

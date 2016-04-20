@@ -1,0 +1,11 @@
+[Unit]
+Description=SCSS Watch (rack)
+After=network.target node.service
+
+[Service]
+Type=simple
+Environment=UI_HOME=<%= @params[:home] %>
+ExecStart=/bin/bash -c "/bin/npm run ${UI_HOME} watch_css > ${UI_HOME}/logs/nodemon.log 2>&1"
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+{
+  "name": "development-server",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "description": "Development server role",
+  "run_list": [
+  ],
+  "env_run_lists" : {
+    "production" : [],
+    "development": [
+      "recipe[env::default]",
+      "recipe[apache::default]",
+      "recipe[mongo::default]",
+      "recipe[ruby::default]",
+      "recipe[npm::default]"
+    ]
+   },
+  "override_attributes": {
+  }
+}

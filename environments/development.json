@@ -1,0 +1,15 @@
+{
+  "name": "development",
+  "json_class": "Chef::Environment",
+  "description": "Development attributes",
+  "chef_type": "environment",
+  "default_attributes": {
+    "ui": {
+      "port": "8080",
+      "home": "/var/apartment_ui"
+    },
+    "api": {
+      "home": "/var/apartment_api"
+    }
+  }
+}

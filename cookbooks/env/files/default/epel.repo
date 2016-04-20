@@ -1,0 +1,7 @@
+[epel]
+name=Extra Packages for Enterprise Linux 7
+enabled=1
+baseurl=http://mirror.datacenter.by/pub/fedoraproject.org/epel/7/x86_64/
+mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-7&arch=x86_64
+gpgcheck=1
+gpgkey=http://mirror.datacenter.by/pub/fedoraproject.org/epel/RPM-GPG-KEY-EPEL-7
