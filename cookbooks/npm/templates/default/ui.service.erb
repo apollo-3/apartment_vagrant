@@ -5,7 +5,7 @@ After=network.target api.service
 [Service]
 Type=simple
 Environment=UI_HOME=<%= @params[:home] %>
-ExecStartPre=/bin/bash -c "mkdir -p ${UI_HOME}/logs ${UI_HOME}/build ${UI_HOME}/public/fonts ${UI_HOME}/public/css"
+ExecStartPre=/bin/bash -c "mkdir -p ${UI_HOME}/logs ${UI_HOME}/build ${UI_HOME}/photos ${UI_HOME}/public/fonts ${UI_HOME}/public/css"
 ExecStartPre=/bin/bash -c "cd ${UI_HOME};grunt"
 ExecStart=/bin/bash -c "/bin/node ${UI_HOME}/index.js > ${UI_HOME}/logs/node.log 2>&1"
 

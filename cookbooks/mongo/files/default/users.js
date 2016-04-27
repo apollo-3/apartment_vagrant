@@ -5,6 +5,7 @@ db.users.insert({
   lang: "en",
   creation_date: new ISODate(),  
   verified: true,
+  account: 'standard',
   projects: [
           {
             name: "1st",
@@ -24,6 +25,7 @@ db.users.insert({
   lang: "en",  
   creation_date: new ISODate(),
   verified: true,
+  account: 'standard',  
   projects: []
 });
 db.projects.insert(
