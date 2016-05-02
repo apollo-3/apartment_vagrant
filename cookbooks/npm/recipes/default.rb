@@ -47,3 +47,19 @@ srvcs.each do |srvc|
     action [:enable, :start]
   end
 end
+
+clean = node[:scripts][:clean]
+template "#{clean[:path]}/clean.rb" do
+  source "clean.rb.erb"
+  variables :params => {
+    :path => "#{node[:ui][:home]}/photos"
+  }
+end
+
+template "/etc/cron.d/clean" do
+  source "clean.erb"
+  variables :params => {
+    :path => "#{clean[:path]}/clean.rb",
+    :log => "#{clean[:log]}/clean.log"
+  }
+end

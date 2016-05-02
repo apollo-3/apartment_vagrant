@@ -1,0 +1,41 @@
+require 'mongo'
+
+# Dumping Mongo logger
+Mongo::Logger.logger = ::Logger.new('/dev/null')
+# DB connection
+client = Mongo::Client.new(['127.0.0.1'], :database => 'apartments')
+# Getting images from users collection
+objs_private = client[:users].aggregate([{:$project => {'images' => '$projects.flats.images', '_id' => 0}},{:$unwind => '$images'}, {:$unwind => '$images'},{:$group => { '_id' => {'images' => '$images'}, 'count' => {:$sum => 1}}},{:$match => {'count' => 1}},{:$project => {'images' => '$_id.images', '_id' => 0}}])
+# Getting images from projects collection
+objs_shared = client[:projects].aggregate([{:$project => {'images' => '$flats.images', '_id' => 0}},{:$unwind => '$images'},{:$group => { '_id' => {'images' => '$images'}, 'count' => {:$sum => 1}}},{:$match => {'count' => 1}},{:$project => {'images' => '$_id.images', '_id' => 0}}])
+# Closing connection to DB
+client.close
+
+# Method for converting collection into array
+def toMyArray collection
+  out = []
+  collection.each do |obj|
+    obj['images'].each do |image|
+      out.push image['img']
+    end
+  end
+  return out
+end
+
+DIR = "<%= @params[:path] %>"
+files =  Dir.exists?(DIR) ? Dir["#{DIR}/*"] : []
+links = toMyArray(objs_private) + toMyArray(objs_shared)
+
+timeStamp = Time.now.strftime "%Y-%m-%d %H:%M:%S"
+puts "#{timeStamp} - cleaning started."
+
+files.each do |file|
+  if !links.include?(file.split('/').last)
+    timeStamp = Time.now.strftime "%Y-%m-%d %H:%M:%S"
+    File.delete(file) if File.exists?(file)
+    puts "#{timeStamp} - #{file} was deleted."
+  end
+end
+
+timeStamp = Time.now.strftime "%Y-%m-%d %H:%M:%S"
+puts "#{timeStamp} - cleaning ended."

@@ -1,0 +1,2 @@
+# Run the daily job
+* 23 * * * root /bin/ruby <%= @params[:path] %> >> <%= @params[:log] %> 2>&1
