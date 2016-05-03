@@ -48,18 +48,22 @@ srvcs.each do |srvc|
   end
 end
 
-clean = node[:scripts][:clean]
-template "#{clean[:path]}/clean.rb" do
-  source "clean.rb.erb"
+directory "#{node[:scripts][:path]}/logs" do
+  recursive true
+  action :create
+end
+
+template "#{node[:scripts][:path]}/image_clean.rb" do
+  source "image_clean.rb.erb"
   variables :params => {
     :path => "#{node[:ui][:home]}/photos"
   }
 end
 
-template "/etc/cron.d/clean" do
-  source "clean.erb"
+template "/etc/cron.d/image_clean" do
+  source "image_clean.erb"
   variables :params => {
-    :path => "#{clean[:path]}/clean.rb",
-    :log => "#{clean[:log]}/clean.log"
+    :path => "#{node[:scripts][:path]}/image_clean.rb",
+    :log => "#{node[:scripts][:path]}/logs/image_clean.log"
   }
 end

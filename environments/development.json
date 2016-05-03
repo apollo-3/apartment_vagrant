@@ -12,10 +12,7 @@
       "home": "/var/apartment_api"
     },
     "scripts": {
-      "clean" : {
-        "path": "/root",
-        "log": "/root"
-      }
+      "path": "/var/apartment_scripts"
     }
   }
 }
