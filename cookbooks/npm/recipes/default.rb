@@ -67,3 +67,19 @@ template "/etc/cron.d/image_clean" do
     :log => "#{node[:scripts][:path]}/logs/image_clean.log"
   }
 end
+
+template "#{node[:scripts][:path]}/report_clean.sh" do
+  source "report_clean.sh.erb"
+  mode '0755'
+  variables :params => {
+    :path => "#{node[:ui][:home]}/reports/*"
+  }
+end
+
+template "/etc/cron.d/report_clean" do
+  source "report_clean.erb"
+  variables :params => {
+    :path => "#{node[:scripts][:path]}/report_clean.sh",
+    :log => "#{node[:scripts][:path]}/logs/report_clean.log"
+  }
+end
