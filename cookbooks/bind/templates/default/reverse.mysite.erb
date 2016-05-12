@@ -1,0 +1,11 @@
+$TTL 3600 
+@       IN SOA  ns1.<%= @params[:hostname] %>. root.<%= @params[:hostname] %>. (
+                                2010021701;     Serial
+                                3600;           Refresh
+                                900;            Retry
+                                360000;         Expire
+                                3600);          Minimum
+          IN NS   ns1.<%= @params[:hostname] %>.
+<%= @params[:ip] %>.       IN PTR  mail.<%= @params[:hostname] %>.
+<%= @params[:ip] %>.       IN PTR  www.<%= @params[:hostname] %>.
+<%= @params[:ip] %>.       IN PTR  ns1.<%= @params[:hostname] %>.

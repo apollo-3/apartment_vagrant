@@ -11,6 +11,7 @@
     "production" : [],
     "development": [
       "recipe[env::default]",
+      "recipe[bind::default]",
       "recipe[apache::default]",
       "recipe[mongo::default]",
       "recipe[ruby::default]",
