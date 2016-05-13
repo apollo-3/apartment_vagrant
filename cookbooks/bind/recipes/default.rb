@@ -27,5 +27,5 @@ template "/var/named/reverse.mysite" do
 end
 
 service "named" do
-  action [:enable, :restart]
+  action [:enable, :start]
 end

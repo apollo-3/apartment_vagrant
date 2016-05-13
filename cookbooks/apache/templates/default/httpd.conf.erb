@@ -350,5 +350,15 @@ EnableSendfile on
 # Supplemental configuration
 #
 # Load config files in the "/etc/httpd/conf.d" directory, if any.
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
+
 IncludeOptional conf.d/*.conf
-ProxyPass / http://127.0.0.1:<%= @params[:port] %>/
+
+ProxyPass / http://127.0.0.1:<%= @params[:ui_port] %>/
+
+<Location /api>
+  ProxyPass http://127.0.0.1:<%= @params[:api_port] %>/api
+</Location>

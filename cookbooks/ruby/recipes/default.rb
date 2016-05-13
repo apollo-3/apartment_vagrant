@@ -23,8 +23,12 @@ bash 'bundler install' do
   not_if { system("gem list | grep mongo") }
 end
 
-cookbook_file '/etc/systemd/system/api.service' do
-  source 'api.service'
+template '/etc/systemd/system/api.service' do
+  source 'api.service.erb'
+  variables :params => {
+    :port => node[:api][:port]
+  }
+  action :create
 end
 
 service 'api' do

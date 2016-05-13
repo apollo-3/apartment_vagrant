@@ -9,13 +9,14 @@
       "home": "/var/apartment_ui"
     },
     "api": {
-      "home": "/var/apartment_api"
+      "home": "/var/apartment_api",
+      "port": "3000"
     },
     "scripts": {
       "path": "/var/apartment_scripts"
     },
     "server": {
-      "hostname": "find-estate.com",
+      "hostname": "estate-hunt.com",
       "ip": "192.168.33.123"
     }
   }

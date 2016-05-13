@@ -8,7 +8,13 @@ SSLRandomSeed startup file:/dev/urandom  256
 SSLRandomSeed connect builtin
 
 <VirtualHost _default_:443>
-  ProxyPass / http://127.0.0.1:<%= @params[:port] %>/
+
+  ProxyPass / http://127.0.0.1:<%= @params[:ui_port] %>/
+  
+  <Location /api>
+    ProxyPass http://127.0.0.1:<%= @params[:api_port] %>/api
+  </Location>
+  
   #DocumentRoot "/var/www/html"
   #ServerName www.example.com:443
 
@@ -25,8 +31,8 @@ SSLRandomSeed connect builtin
   #SSLCipherSuite RC4-SHA:AES128-SHA:HIGH:MEDIUM:!aNULL:!MD5
   #SSLHonorCipherOrder on 
 
-  SSLCertificateFile /etc/pki/tls/certs/localhost.crt
-  SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+  SSLCertificateFile /etc/httpd/certs/<%= @params[:hostname] %>.crt
+  SSLCertificateKeyFile /etc/httpd/certs/<%= @params[:hostname] %>.key
   #SSLCertificateChainFile /etc/pki/tls/certs/server-chain.crt
   #SSLCACertificateFile /etc/pki/tls/certs/ca-bundle.crt
   #SSLVerifyClient require

@@ -6,17 +6,32 @@ pkgs.each do |pkg|
   end
 end
 
+directory "/etc/httpd/certs" do
+  action :create
+end
+
+fls = ["#{node[:server][:hostname]}.key", "#{node[:server][:hostname]}.crt"]
+fls.each do |file|  
+  cookbook_file "/etc/httpd/certs/#{file}" do
+    source file
+    action :create
+  end
+end
+
 template '/etc/httpd/conf.d/ssl.conf' do
   source 'ssl.conf.erb'
   variables :params => {
-    :port => node[:ui][:port]
+    :ui_port => node[:ui][:port],
+    :api_port => node[:api][:port],
+    :hostname => node[:server][:hostname]
   }
 end
 
 template '/etc/httpd/conf/httpd.conf' do
   source 'httpd.conf.erb'
   variables :params => {
-    :port => node[:ui][:port]
+    :ui_port => node[:ui][:port],
+    :api_port => node[:api][:port]
   }
 end
 
