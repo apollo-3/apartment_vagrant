@@ -46,7 +46,7 @@ end
 
 node[:vhosts].each do |vhost|
   cookbook_file "/etc/httpd/vhosts/#{vhost}.conf" do
-    source vhost
+    source "#{vhost}.conf"
     action :create
   end
 end
