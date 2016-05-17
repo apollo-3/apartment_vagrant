@@ -4,7 +4,7 @@
   "json_class": "Chef::Role",
   "default_attributes": {
   },
-  "description": "Productuion server role",
+  "description": "Production server role",
   "run_list": [
   ],
   "env_run_lists" : {
