@@ -45,7 +45,7 @@ directory '/etc/httpd/vhosts' do
 end
 
 node[:vhosts].each do |vhost|
-  coobook_file "/etc/httpd/vhosts/#{vhost}.conf" do
+  cookbook_file "/etc/httpd/vhosts/#{vhost}.conf" do
     source vhost
     action :create
   end
