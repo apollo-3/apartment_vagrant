@@ -32,7 +32,8 @@ template '/etc/httpd/conf/httpd.conf' do
   source 'httpd.conf.erb'
   variables :params => {
     :ui_port => node[:ui][:port],
-    :api_port => node[:api][:port]
+    :api_port => node[:api][:port],
+    :exceptions => ['example\.com']
   }
 end
 

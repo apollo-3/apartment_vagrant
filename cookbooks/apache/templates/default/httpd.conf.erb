@@ -352,6 +352,9 @@ EnableSendfile on
 # Load config files in the "/etc/httpd/conf.d" directory, if any.
 
 RewriteEngine On
+<% @params[:exceptions].each do |exception| %>
+RewriteCond %{HTTP_HOST} !^<%= exception %> [NC]
+<% end %>
 RewriteCond %{HTTPS} off
 RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
 
