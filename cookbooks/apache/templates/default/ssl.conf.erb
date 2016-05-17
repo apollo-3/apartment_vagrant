@@ -33,7 +33,7 @@ SSLRandomSeed connect builtin
 
   SSLCertificateFile /etc/httpd/certs/<%= @params[:hostname] %>.crt
   SSLCertificateKeyFile /etc/httpd/certs/<%= @params[:hostname] %>.key
-  #SSLCertificateChainFile /etc/pki/tls/certs/server-chain.crt
+  SSLCertificateChainFile /etc/httpd/certs/intermediate.crt
   #SSLCACertificateFile /etc/pki/tls/certs/ca-bundle.crt
   #SSLVerifyClient require
   #SSLVerifyDepth  10

@@ -1,5 +1,5 @@
 {
-  "name": "development",
+  "name": "production",
   "json_class": "Chef::Environment",
   "description": "Development attributes",
   "chef_type": "environment",
@@ -17,8 +17,9 @@
     },
     "server": {
       "hostname": "estate-hunt.com",
-      "ip": "192.168.33.123"
-      "certificate": "dev-estate-hunt.com"
+      "ip": "95.46.98.70"
+      "certificate": "estate-hunt.com"
     }    
   }
+}
 }
