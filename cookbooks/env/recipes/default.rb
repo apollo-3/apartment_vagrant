@@ -13,6 +13,10 @@ service 'firewalld' do
   action [:disable, :stop]
 end
 
+directory "#{node[:scripts][:path]}" do
+  action :create
+end
+
 template "#{node[:scripts][:path]}/make_dump.sh" do
   source "make_dump.sh.erb"
   variables :params => {
