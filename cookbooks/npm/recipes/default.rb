@@ -83,3 +83,5 @@ template "/etc/cron.d/report_clean" do
     :log => "#{node[:scripts][:path]}/logs/report_clean.log"
   }
 end
+
+include_recipe "mongo::import_from_dump"
