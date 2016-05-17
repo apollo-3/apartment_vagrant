@@ -1,8 +1,8 @@
-cookbookfile "/tmp/iptables" do
+cookbook_file "/tmp/iptables" do
   source "iptables"
 end
 
-cookbookfile "#{node[:scripts][:path]}/iptables-rules" do
+cookbook_file "#{node[:scripts][:path]}/iptables-rules" do
   source 'iptables-rules'
   action :create
 end
