@@ -360,8 +360,12 @@ RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
 
 IncludeOptional conf.d/*.conf
 
-ProxyPass / http://127.0.0.1:<%= @params[:ui_port] %>/
+<VirtualHost *:80>
+  ProxyPass / http://127.0.0.1:<%= @params[:ui_port] %>/
 
-<Location /api>
-  ProxyPass http://127.0.0.1:<%= @params[:api_port] %>/api
-</Location>
+  <Location /api>
+    ProxyPass http://127.0.0.1:<%= @params[:api_port] %>/api
+  </Location>
+</VirtualHost>
+
+Include vhosts/*.conf

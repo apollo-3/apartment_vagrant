@@ -28,13 +28,27 @@ template '/etc/httpd/conf.d/ssl.conf' do
   }
 end
 
+excpts = []
+node[:vhosts].each do |vhost| { excpts.push vhost.gsub('.','\.') }
+
 template '/etc/httpd/conf/httpd.conf' do
   source 'httpd.conf.erb'
   variables :params => {
     :ui_port => node[:ui][:port],
     :api_port => node[:api][:port],
-    :exceptions => ['example\.com']
+    :exceptions => excpts
   }
+end
+
+directory '/etc/httpd/vhosts' do
+  action :create
+end
+
+node[:vhosts].each do |vhost|
+  coobook_file "/etc/httpd/vhosts/#{vhost}.conf" do
+    source vhost
+    action :create
+  end
 end
 
 service 'httpd' do
