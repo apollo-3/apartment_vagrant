@@ -29,7 +29,7 @@ template '/etc/httpd/conf.d/ssl.conf' do
 end
 
 excpts = []
-node[:vhosts].each do |vhost| { excpts.push vhost.gsub('.','\.') }
+node[:vhosts].each { |vhost| excpts.push vhost.gsub('.','\.') }
 
 template '/etc/httpd/conf/httpd.conf' do
   source 'httpd.conf.erb'
