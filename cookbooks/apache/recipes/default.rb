@@ -23,7 +23,8 @@ template '/etc/httpd/conf.d/ssl.conf' do
   variables :params => {
     :ui_port => node[:ui][:port],
     :api_port => node[:api][:port],
-    :hostname => node[:server][:hostname]
+    :hostname => node[:server][:hostname],
+    :certificate => node[:server][:certificate]
   }
 end
 
