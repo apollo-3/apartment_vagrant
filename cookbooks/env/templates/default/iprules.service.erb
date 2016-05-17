@@ -1,0 +1,10 @@
+[Unit]
+Description=iptables rules loader
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/sbin/iptables-restore <%= @params[:path] %>
+
+[Install]
+WantedBy=multi-user.target

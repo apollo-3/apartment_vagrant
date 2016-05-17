@@ -1,10 +1,10 @@
 {
-  "name": "development-server",
+  "name": "production-server",
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {
   },
-  "description": "Development server role",
+  "description": "Productuion server role",
   "run_list": [
   ],
   "env_run_lists" : {

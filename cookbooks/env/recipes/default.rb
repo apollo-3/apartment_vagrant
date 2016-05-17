@@ -2,7 +2,7 @@ cookbook_file '/etc/yum.repos.d/epel.repo' do
   source 'epel.repo'
 end
 
-pkgs = ['net-tools', 'zip', 'unzip', 'gcc-c++']
+pkgs = ['net-tools', 'zip', 'unzip', 'gcc-c++', 'iptables-services']
 pkgs.each do |pkg|
   package pkg do
     action :install
