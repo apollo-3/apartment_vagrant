@@ -17,7 +17,7 @@
     },
     "server": {
       "hostname": "estate-hunt.com",
-      "ip": "95.46.98.70"
+      "ip": "95.46.98.70",
       "certificate": "estate-hunt.com"
     }    
   }
