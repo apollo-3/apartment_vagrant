@@ -1,0 +1,7 @@
+cd /tmp/
+mongodump --db apartments --out dump
+zip -r dump.zip dump
+cp -r <%= @params[:path] %> /tmp
+zip -r photos.zip photos
+rm -rf photos
+
