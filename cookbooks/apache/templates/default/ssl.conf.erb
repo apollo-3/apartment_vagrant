@@ -32,7 +32,7 @@ SSLRandomSeed connect builtin
   #SSLHonorCipherOrder on 
 
   SSLCertificateFile /etc/httpd/certs/<%= @params[:certificate] %>.crt
-  SSLCertificateKeyFile /etc/httpd/certs/<%= @params[:certificate] %>.key
+  SSLCertificateKeyFile /etc/httpd/certs/<%= @params[:hostname] %>.key
   SSLCertificateChainFile /etc/httpd/certs/intermediate.crt
   #SSLCACertificateFile /etc/pki/tls/certs/ca-bundle.crt
   #SSLVerifyClient require

@@ -10,7 +10,7 @@ directory "/etc/httpd/certs" do
   action :create
 end
 
-fls = ["#{node[:server][:certificate]}.key", "#{node[:server][:certificate]}.crt", "intermediate.crt"]
+fls = ["#{node[:server][:hostname]}.key", "#{node[:server][:certificate]}.crt", "intermediate.crt"]
 fls.each do |file|  
   cookbook_file "/etc/httpd/certs/#{file}" do
     source file
