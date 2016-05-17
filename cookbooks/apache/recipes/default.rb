@@ -28,15 +28,11 @@ template '/etc/httpd/conf.d/ssl.conf' do
   }
 end
 
-excpts = []
-node[:vhosts].each { |vhost| excpts.push vhost.gsub('.','\.') }
-
 template '/etc/httpd/conf/httpd.conf' do
   source 'httpd.conf.erb'
   variables :params => {
     :ui_port => node[:ui][:port],
     :api_port => node[:api][:port],
-    :exceptions => excpts
   }
 end
 
