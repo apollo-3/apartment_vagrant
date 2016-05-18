@@ -11,7 +11,7 @@ template "/etc/postfix/main.cf" do
   source 'main.cf.erb'
   variables :params => {
     :hostname => node[:server][:hostname],
-    :ip => node[:server][:ip].split('.')[0..2].join('.') + '.0'    
+    :ip => node[:server][:ip]    
   }
   action :create
 end
