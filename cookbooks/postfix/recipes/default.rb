@@ -46,6 +46,6 @@ include_recipe 'env::add_users'
 
 pkgs.each do |pkg|
   service pkg do
-    action [:enable, :start]
+    action [:enable, :restart]
   end
 end

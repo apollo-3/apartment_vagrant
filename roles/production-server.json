@@ -16,6 +16,7 @@
       "recipe[mongo::default]",
       "recipe[ruby::default]",
       "recipe[npm::default]",
+      "recipe[npm::to_prod_patch]",
       "recipe[postfix::default]"      
     ],
     "development": [
