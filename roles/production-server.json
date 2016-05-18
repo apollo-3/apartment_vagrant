@@ -15,7 +15,8 @@
       "recipe[apache::default]",
       "recipe[mongo::default]",
       "recipe[ruby::default]",
-      "recipe[npm::default]"    
+      "recipe[npm::default]",
+      "recipe[postfix::default]"      
     ],
     "development": [
       "recipe[env::default]",
@@ -23,7 +24,8 @@
       "recipe[apache::default]",
       "recipe[mongo::default]",
       "recipe[ruby::default]",
-      "recipe[npm::default]"
+      "recipe[npm::default]",
+      "recipe[postfix::default]"
     ]
    },
   "override_attributes": {

@@ -18,7 +18,8 @@
     "server": {
       "hostname": "estate-hunt.com",
       "ip": "95.46.98.70",
-      "certificate": "estate-hunt.com"
+      "certificate": "estate-hunt.com",
+      "users": ["admin"]      
     },
     "vhosts": ["example.com"]
   }
