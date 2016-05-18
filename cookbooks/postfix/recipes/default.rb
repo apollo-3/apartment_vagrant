@@ -29,7 +29,7 @@ cookbook_file '/etc/dovecot/dovecot.conf' do
   action :create
 end
 
-files = ['10-auth.conf', '10-mail.conf', '10-master.conf']
+files = ['10-auth.conf', '10-mail.conf', '10-master.conf', '10-logging.conf']
 files.each do |file|
   cookbook_file "/etc/dovecot/conf.d/#{file}" do
     source file
