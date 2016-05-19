@@ -33,7 +33,7 @@ bash 'unzip_photos' do
   cwd '/tmp'
   code <<-EOH
     unzip photos.zip
-    mv photos/* "#{node[:ui][:home]}/photos"
+    [ `ls -l /tmp/photos/ | grep root | wc -l` -gt 0 ] && mv photos/* "#{node[:ui][:home]}/photos"
     EOH
   only_if { !File.directory?('/tmp/photos') }
 end  
