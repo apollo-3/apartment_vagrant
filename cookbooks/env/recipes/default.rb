@@ -20,7 +20,7 @@ end
 template "#{node[:scripts][:path]}/make_dump.sh" do
   source "make_dump.sh.erb"
   variables :params => {
-    path => "#{node[:ui][:home]}/photos"
+    :path => "#{node[:ui][:home]}/photos"
   }
   mode '0755'
   action :create
