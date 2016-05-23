@@ -696,3 +696,5 @@ smtpd_use_tls = yes
 smtpd_tls_cert_file = /etc/httpd/certs/postfix.crt
 smtpd_tls_key_file = /etc/httpd/certs/<%= @params[:hostname] %>.key
 smtpd_tls_session_cache_database = btree:/etc/postfix/smtpd_scache
+
+smtpd_sender_restrictions = reject_non_fqdn_sender
