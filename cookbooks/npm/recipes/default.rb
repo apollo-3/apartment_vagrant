@@ -62,6 +62,7 @@ end
 
 template "/etc/cron.d/image_clean" do
   source "image_clean.erb"
+  mode '751'
   variables :params => {
     :path => "#{node[:scripts][:path]}/image_clean.rb",
     :log => "#{node[:scripts][:path]}/logs/image_clean.log"
